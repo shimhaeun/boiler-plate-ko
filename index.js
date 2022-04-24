@@ -28,7 +28,7 @@ app.post('/register', (req, res) => {
     // 회원가입할 때 필요한 정보들을 client에서 가져오면 그것들을 데이터베이스에 넣어준다.
 
     const user = new User(req.body) // 2. 인스턴스를 만들어 줌. req.body : id, password등 정보 들어있음 bodyParser통해서
-
+    console.log(user,"user!");
     user.save((err, userInfo) => { //save <- mongoDB에서 오는 메소드. 정보들이 userModel에 저장됨, 에러 발생 시 json형식으로 변환  
         if(err) return res.json({success: false, err}) // json형식으로 에러가 있을 경우 전달
         return res.status(200).json({ // status(200)은 성공했다는 뜻
